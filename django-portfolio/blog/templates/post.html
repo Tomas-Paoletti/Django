@@ -1,0 +1,18 @@
+
+{%extends 'layout.html' %}
+
+{%block content %}
+
+<h1>Post
+</h1>
+
+    {%for post in post%}
+        <h2>{{post.tittle}}</h2>
+        <h3>{{post.date}}</h3>
+        <p>{{post.description|safe|truncatechars:80}}</p><!--truncatechars lo que hace es limitar las cantiad de caracteres a mostrar y safe lo que hace es usar el html de la descripcion  striptags saca el codigo html-->
+        <p>{{post.date|date:'M d Y'}}</p><!-- date: "string" es para formatear la fecha-->
+        <img src="{{post.image.url}}" alt="{{post.title}}">
+        <a href="{%url 'blog:post_detail' post.id%}">{{post.title}}</a><!-- blog:postdetail url que queremos ir y por fuera el parametro que queremos pasar-->
+    {%endfor%}
+
+{%endblock%}
